@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Update Item</h1>
+    <form action="/update/" method="POST">
+      <label for="item_name">Name</label>
+      <input id="item_name" type="text" name="item_name" value="<%= current_item.name %>">
+      <label for="item_description">Description</label>
+      <input id="item_description" type="text" name="item_description" value="<%= current_item.description %>">
+      <label for="item_category">Category</label>
+      <select name="item_category">
+        <% for (let i = 0; i < category_list.length; i++) { %>
+          <% if (category_list[i].id == current_item.category) { %>
+            <option value=<%= category_list[i].id %> selected>
+              <%= category_list[i].name %>
+            </option>
+          <% } else { %>
+            <option value=<%= category_list[i].id %>>
+              <%= category_list[i].name %>
+            </option>
+          <% } %>
+        <% } %>
+      </select>
+      <label for="item_price">Price</label>
+      <input id="item_price" type="number" name="item_price" min="0" max="1000000" step="0.01" value=<%= current_item.price %>>
+      <label for="item_stock">Stock Count</label>
+      <input id="item_stock" type="number" name="item_stock" min="1" max="1000000" value=<%= current_item.stock %>>
+      <input type="submit" value="Update">
+    </form>
+  </body>
+</html>

@@ -6,18 +6,19 @@ let controller = require('../controllers/itemController');
 
 router.get('/', controller.item_list);
 
-router.get('/:itemId', controller.item_display);
-
 router.get('/new', controller.item_new_form);
 
 router.post('/new', controller.item_new_submit);
 
-router.get('/update', controller.item_update_form);
+router.get('/:id/update', controller.item_update_form);
 
-router.post('/update', controller.item_update_submit);
+router.post('/:id/update', controller.item_update_submit);
 
-router.get('/delete', controller.item_delete_form);
+router.get('/:id/delete', controller.item_delete_form);
 
-router.post('/delete', controller.item_delete_submit);
+router.post('/:id/delete', controller.item_delete_submit);
+
+// Remember, order matters so we put :id here so we can properly render our form pages
+router.get('/:id', controller.item_display);
 
 module.exports = router;

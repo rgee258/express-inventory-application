@@ -6,6 +6,12 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <% for (let i = 0; i < category_list.length; i++) { %>
+      <div class="category-entry">
+        <a href=<%= category_list[i].url %>>
+          <%= category_list[i].name %>
+        </a>
+      </div>
+    <% } %>
   </body>
 </html>

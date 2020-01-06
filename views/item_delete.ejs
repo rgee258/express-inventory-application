@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1>Delete Item</h1>
+    <h3>Warning</h3>
+    <p>To delete this item, press the button below.</p>
+    <p>This action is irreversible.</p>
+    <form action="/delete/" method="POST">
+      <input type="hidden" value=<%= current_item.id %>>
+      <input type="submit" value="Delete">
+    </form>
+  </body>
+</html>
