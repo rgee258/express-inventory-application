@@ -13,7 +13,8 @@ var app = express();
 
 // Set up Mongoose Connection
 var mongoDB = '<database url>';
-mongoose.connect(mongoDB, { useNewURLParser: true });
+// Option for useFindandModify is for findOneAndUpdate, as seen here: https://mongoosejs.com/docs/deprecations.html#-findandmodify-
+mongoose.connect(mongoDB, { useNewURLParser: true, useFindAndModify: false });
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 

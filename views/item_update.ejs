@@ -6,7 +6,19 @@
   </head>
   <body>
     <h1>Update Item</h1>
-    <form action="/update/" method="POST">
+
+    <% if (typeof errors !== 'undefined') { %>
+      <div class="form-errors">
+        <p>Form submission failed with the following errors:</p>
+        <ul>
+          <% for (let i = 0; i < errors.length; i++) { %>
+            <li><%= errors[i].msg %></li>
+          <% } %>
+        </ul>
+      </div>
+    <% } %>
+
+    <form action="/items/<%= current_item.id %>/update/" method="POST">
       <label for="item_name">Name</label>
       <input id="item_name" type="text" name="item_name" value="<%= current_item.name %>">
       <label for="item_description">Description</label>
