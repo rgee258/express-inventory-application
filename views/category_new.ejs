@@ -6,12 +6,38 @@
   </head>
   <body>
     <h1>Add Category</h1>
-    <form action="/new/" method="POST">
-      <label for="category_name">Name</label>
-      <input id="category_name" type="text" name="category_name">
-      <label for="category_description">Description</label>
-      <input id="category_description" type="text" name="category_description">
-      <input type="submit" value="Add">
-    </form>
+
+    <div class="navigation">
+      <p><a href="/">Home</a></p>
+      <p><a href="/categories">All Categories</a></p>
+    </div>
+
+    <% if (typeof errors !== 'undefined') { %>
+      <div class="form-errors">
+        <p>Form submission failed with the following errors:</p>
+        <ul>
+          <% for (let i = 0; i < errors.length; i++) { %>
+            <li><%= errors[i].msg %></li>
+          <% } %>
+        </ul>
+      </div>
+    <% } %>
+    <% if (typeof new_category !== 'undefined') { %>
+      <form action="/categories/new/" method="POST">
+        <label for="category_name">Name</label>
+        <input id="category_name" type="text" name="category_name" value="<%= new_category.name %>">
+        <label for="category_description">Description</label>
+        <input id="category_description" type="text" name="category_description" value="<%= new_category.description %>">
+        <input type="submit" value="Add">
+      </form>
+    <% } else { %>
+      <form action="/categories/new/" method="POST">
+        <label for="category_name">Name</label>
+        <input id="category_name" type="text" name="category_name">
+        <label for="category_description">Description</label>
+        <input id="category_description" type="text" name="category_description">
+        <input type="submit" value="Add">
+      </form>
+    <% } %>
   </body>
 </html>

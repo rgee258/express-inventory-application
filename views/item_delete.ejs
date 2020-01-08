@@ -6,11 +6,36 @@
   </head>
   <body>
     <h1>Delete Item</h1>
+
+    <div class="navigation">
+      <p><a href="/">Home</a></p>
+      <p><a href="/items/<%= current_item.id %>">Go Back</a></p>
+    </div>
+
+    <% if (typeof errors !== 'undefined') { %>
+      <div class="form-errors">
+        <p>Form submission failed with the following errors:</p>
+        <ul>
+          <% for (let i = 0; i < errors.length; i++) { %>
+            <li><%= errors[i].msg %></li>
+          <% } %>
+        </ul>
+      </div>
+    <% } %>
+
+    <% if (typeof denied !== 'undefined') { %>
+      <div class="access-denied">
+        <p><%= denied %></p>
+      </div>
+    <% } %>
+
     <h3>Warning</h3>
     <p>To delete this item, press the button below.</p>
     <p>This action is irreversible.</p>
-    <form action="/delete/" method="POST">
-      <input type="hidden" value=<%= current_item.id %>>
+    <form action="/items/<%= current_item.id %>/delete/" method="POST">
+      <input type="hidden" name="item_id" value=<%= current_item.id %>>
+      <label for="password">Enter the admin password to perform this action below.</label>
+      <input id="password" type="text" name="password" %>">
       <input type="submit" value="Delete">
     </form>
   </body>

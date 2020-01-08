@@ -67,7 +67,7 @@ exports.item_new_submit = [
         .find({}, 'name id')
         .exec(function(err, categories) {
           if (err) { return next(err); }
-          res.render('item_new', { title: 'New Item', category_list: categories, errors: errors.array() });
+          res.render('item_new', { title: 'New Item', category_list: categories, new_item: item, errors: errors.array() });
         });
     } else {
       item.save(function(err) {
@@ -153,6 +153,39 @@ exports.item_delete_form = function(req, res, next) {
 };
 
 // Item POST delete form
-exports.item_delete_submit = function(req, res, next) {
+exports.item_delete_submit = [
+  
+  validator.body('password', 'Password is required to perform this action.').isLength({ min: 1 }).trim(),
 
-}
+  validator.sanitizeBody('password').escape(),
+
+  (req, res, next) => {
+
+    // Retrieve validation errors
+    const errors = validator.validationResult(req);
+
+    if (!errors.isEmpty()) {
+      Item
+        .findById(req.params.id, 'id')
+        .exec(function(err, item) {
+          if (err) { return next(err); }
+          res.render('item_delete', { title: 'Delete Item', current_item: item, errors: errors.array() });
+        });
+    } else {
+      if (req.body.password !== process.env.ADMIN_PASSWORD) {
+        Item
+          .findById(req.params.id, 'id')
+          .exec(function(err, item) {
+            if (err) { return next(err); }
+            res.render('item_delete', { title: 'Delete Item', current_item: item, denied: "Access denied." });
+          });
+      } else {
+        Item.findByIdAndRemove(req.body.item_id, function(err) {
+          if (err) { return next(err); }
+          // Redirect to the item list on success
+          res.redirect('/items');
+        });
+      }
+    }
+  }
+];

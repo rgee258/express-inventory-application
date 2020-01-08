@@ -6,8 +6,14 @@
   </head>
   <body>
     <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-    <p>There are <%= data.fresh_water_count %> varieties of fresh water fish currently in stock.</p>
-    <p>There are <%= data.salt_water_count %> varieties of salt water fish currently in stock.</p>
+    <div class="navigation">
+      <p><a href="/items">View Items</a></p>
+      <p><a href="/categories">View Categories</a></p>
+    </div>
+    <p>Welcome to the <%= title %>!</p>
+    <p>Here you will find an inventory management system.</p>
+    <p>You can manage items and the categories that they fall under by adding them to this system.</p>
+    <h3>Important</h3>
+    <p>Make sure that you have at least one category available, or else you won't be able to create any items!</p>
   </body>
 </html>

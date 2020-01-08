@@ -6,6 +6,12 @@
   </head>
   <body>
     <h1><%= category_display.name %></h1>
+    <div class="navigation">
+      <p><a href="/">Home</a></p>
+      <p><a href="/categories">All Categories</a></p>
+      <p><a href="/categories/<%= category_display.id %>/update">Update Category</a></p>
+    </div>
     <p><%= category_display.description %></p>
+    <p><a href="/categories/<%= category_display.id%>/delete">Delete Item</a></p>
   </body>
 </html>

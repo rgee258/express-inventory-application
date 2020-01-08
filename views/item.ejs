@@ -6,9 +6,20 @@
   </head>
   <body>
     <h1><%= item_display.name %></h1>
+    <div class="navigation">
+      <p><a href="/">Home</a></p>
+      <p><a href="/items">All Items</a></p>
+      <p><a href="/items/<%= item_display.id %>/update">Update Item</a></p>
+    </div>
     <p><%= item_display.description %></p>
-    <p><%= item_display.category.name %> Fish</p>
+    <!-- Handle scenario if category is deleted -->
+    <% if (item_display.category == null) { %>
+    <p>Missing Category</p>
+    <% } else { %>
+    <p><%= item_display.category.name %></p>
+    <% } %>
     <p>$<%= item_display.price %></p>
     <p><%= item_display.stock %> in Stock</p>
+    <p><a href="/items/<%= item_display.id%>/delete">Delete Item</a></p>
   </body>
 </html>
