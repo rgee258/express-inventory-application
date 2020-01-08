@@ -70,10 +70,10 @@ function categoryCreate(name, description, cb) {
 function createCategories(cb) {
     async.series([
         function(callback) {
-          categoryCreate('Fresh Water', 'Water with less than 0.05% salt content.', callback);
+          categoryCreate('Fresh Water Fish', 'Fish that live in water with less than 0.05% salt content.', callback);
         },
         function(callback) {
-          categoryCreate('Salt Water', 'Water with 3 - 5% salt content.', callback);
+          categoryCreate('Salt Water Fish', 'Fish that live in water with 3 - 5% salt content.', callback);
         }
         ],
         // optional callback

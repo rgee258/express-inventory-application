@@ -6,6 +6,10 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <div class="navigation">
+      <p><a href="/">Home</a></p>
+      <p><a href="/items/new">Add Item</a></p>
+    </div>
     <% for (let i = 0; i < item_list.length; i++) { %>
       <div class="item-entry">
         <a href=<%= item_list[i].url %>>
