@@ -2,8 +2,6 @@
 
 Here you'll find a barebones Express app used for fish inventory management. It contains your standard CRUD actions and was developed to further practice using Express with the MVC pattern. As this app was created for backend practice with Express it contains no styling aside from that provided through the Express generator. This may be revisited in the future.
 
-You can try it on Heroku [here](https://dry-hamlet-19740.herokuapp.com/).
-
 This project is done following The Odin Project, which can
 be found [here](https://www.theodinproject.com/courses/nodejs/lessons/inventory-application).
 
@@ -39,7 +37,7 @@ The following features are available in this app:
 
 All items are to be associated with an available category that has been previously created. If no categories exist, then item creation will be prevented. Make sure there is always one active category available.
 
-Items containing previously removed categories will be marked as *Missing Category*.
+Items containing previously removed categories will be marked as _Missing Category_.
 
 ## Useful References
 
@@ -47,4 +45,3 @@ Items containing previously removed categories will be marked as *Missing Catego
 - Idea of approaching referencing an object by id: https://stackoverflow.com/questions/36201689/mongoose-find-a-document-by-reference-property
 - Then query chaining using prior results, see second answer: https://stackoverflow.com/questions/20699947/how-to-return-query-results-to-a-variable-using-mongoose/20702542
 - Setting up environment variables with Node: https://codeburst.io/how-to-easily-set-up-node-environment-variables-in-your-js-application-d06740f9b9bd
-
